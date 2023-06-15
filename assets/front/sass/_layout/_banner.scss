@@ -1,0 +1,241 @@
+/*Hero Section*/
+.hero-section {
+	position: relative;
+	background: linear-gradient(
+		-45deg,
+		var(--base-clr) 10%,
+		var(--base-clr-2) 90%
+	);
+	overflow: hidden;
+}
+.inner-hero {
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 60px), 0% 100%);
+}
+
+.hero-bg {
+	position: absolute;
+	inset: -1px;
+	clip-path: polygon(100% calc(100% - 100px), 0% 100%, 100% 100%);
+	z-index: 2;
+}
+.hero-img {
+	@include breakpoint(lg) {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 50%;
+		max-height: 100%;
+		img {
+			max-width: 620px;
+			max-height: calc(100% - 85px);
+		}
+	}
+	@include breakpoint(max-lg) {
+		max-width: 500px;
+		margin: 0 auto;
+		img {
+			width: 100%;
+		}
+	}
+}
+.line-1,
+.line-2 {
+	height: 100%;
+	width: 1px;
+	background: rgba(var(--white-rgb), 0.2);
+	position: absolute;
+	top: 0;
+	left: 100px;
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		display: block;
+		top: -50%;
+		left: 0;
+		width: 100%;
+		height: 10vh;
+		background: linear-gradient(
+			to bottom,
+			rgb(255 255 255/0) 0%,
+			rgb(255 255 255/0.25) 66%,
+			rgb(255 255 255/0.5) 75%,
+			rgb(255 255 255/0.75) 100%
+		);
+		-webkit-animation: transformBottom 8s infinite;
+		animation: transformBottom 8s infinite;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+		-webkit-animation-timing-function: cubic-bezier(0.5, 0.25, 0, 0.95, 1);
+		animation-timing-function: cubic-bezier(0.5, 0.25, 0, 0.95, 1);
+	}
+	&::after {
+		animation-delay: 4s;
+		-webkit-animation-delay: 4s;
+		-moz-animation-delay: 4s;
+	}
+	@include breakpoint(max-xxl) {
+		left: 20px;
+		@include breakpoint(lg) {
+			@media screen and (max-width: 1000px) {
+				left: 15px;
+			}
+		}
+	}
+	@include breakpoint(max-sm) {
+		display: none;
+	}
+}
+.line-2 {
+	left: calc(100% - 100px);
+	@include breakpoint(max-xxl) {
+		left: calc(100% - 20px);
+		@include breakpoint(lg) {
+			@media screen and (max-width: 1000px) {
+				left: calc(100% - 15px);
+			}
+		}
+	}
+}
+@keyframes transformBottom {
+	0% {
+		top: 0;
+		@include transform(translateY(-100%));
+	}
+	100% {
+		top: 100%;
+		@include transform(translateY(0));
+	}
+}
+.hero-wrapper {
+	padding: 190px 0;
+	max-width: 620px;
+	position: relative;
+	z-index: 2;
+	.hero-info {
+		color: rgba(var(--white-rgb), 0.6);
+		font-size: 24px;
+		display: block;
+		margin-bottom: 15px;
+	}
+	.hero-title {
+		color: #fff;
+		margin-bottom: 30px;
+	}
+	.hero-text {
+		font-size: 18px;
+	}
+	color: var(--light-clr);
+	.btn__grp {
+		margin-top: 30px;
+		.cmn--btn {
+			&:hover {
+				border-color: var(--white-clr);
+				color: var(--white-clr);
+			}
+			&.btn--white {
+				&:hover {
+					background: transparent !important;
+				}
+			}
+		}
+	}
+	@include breakpoint(max-xl) {
+		@include breakpoint(lg) {
+			width: 50%;
+			max-width: 555px;
+			padding-top: 170px;
+			.hero-title {
+				font-size: 50px;
+				line-height: 60px;
+			}
+		}
+	}
+	@include breakpoint(max-lg) {
+		padding: 100px 0 50px;
+		margin: 0 auto;
+	}
+	@include breakpoint(max-sm) {
+		padding: 50px 0 50px;
+	}
+	@media screen and (max-width: 420px) {
+		.hero-title {
+			font-size: 36px;
+		}
+	}
+}
+.btn__grp {
+	.cmn--btn {
+		min-width: 120px;
+		@include breakpoint(sm) {
+			min-width: 150px;
+		}
+	}
+}
+.shorten--form {
+	.input-group {
+		.form-control {
+			height: 70px;
+			border: 2px solid var(--base-clr);
+			@include border-radius(5px !important);
+			padding-right: 140px;
+		}
+		.cmn--btn {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			@include border-radius(3px !important);
+			z-index: 9;
+		}
+	}
+}
+.inner-hero-text {
+	padding: 30px 0 70px;
+	text-align: center;
+	.title {
+		color: var(--white-clr);
+	}
+}
+.breadcrumb {
+	justify-content: center;
+	margin-top: 10px;
+	li {
+		color: var(--white-clr);
+		a {
+			color: var(--white-clr);
+			display: flex;
+			align-items: center;
+			&::after {
+				content: "";
+				width: 16px;
+				height: 2px;
+				background: var(--white-clr);
+				display: inline-block;
+				margin: 0 5px;
+			}
+		}
+	}
+}
+.about-card {
+	&:not(:last-child) {
+		margin-bottom: 45px;
+	}
+	&__title {
+		margin-bottom: 20px;
+	}
+}
+.dots-list {
+	padding-left: 1rem;
+	li {
+		&::before {
+			content: "";
+			display: inline-block;
+			width: 5px;
+			height: 5px;
+			background: var(--title-clr);
+			border-radius: 50%;
+			transform: translateY(-3px);
+			margin-right: 5px;
+		}
+	}
+}
